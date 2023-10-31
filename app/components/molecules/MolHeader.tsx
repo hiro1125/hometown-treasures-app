@@ -1,9 +1,9 @@
 'use client';
-import { useMoment } from '@/app/hooks/useMoment';
+import { useDateTime } from '@/app/hooks/useDateTime';
 import React from 'react';
 
 const MolHeader = () => {
-  const dateTime = useMoment();
+  const dateTime = useDateTime();
   return (
     <div className='bg-red-100 h-20 flex items-center justify-center gap-10'>
       <div className='flex relative items-center'>

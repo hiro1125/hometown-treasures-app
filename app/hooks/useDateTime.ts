@@ -29,7 +29,7 @@ export const fetchServerTime = async () => {
   }
 };
 
-export const useMoment = () => {
+export const useDateTime = () => {
   const [dateTime, setDateTime] = useState('');
 
   useEffect(() => {
