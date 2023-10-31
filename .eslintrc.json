@@ -1,3 +1,15 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // 関数内で計算処理がない場合にreturnをするとエラー
+    "arrow-body-style": ["error", "as-needed"],
+    // 配列内にスペースがあるとエラー
+    "array-bracket-spacing": ["error", "never"],
+    // 重複したインポートがある場合エラー
+    "no-duplicate-imports": "error",
+    // new Functionを仕様したらエラーにする
+    "no-new-func": "error",
+    // 関数の引数に渡ってきた配列に直接pushをしたらエラー
+    "no-param-reassign": "error"
+  }
 }
