@@ -3,11 +3,12 @@ import { useMoment } from '@/app/hooks/useMoment';
 import React from 'react';
 
 const MolHeader = () => {
-  const time = useMoment();
+  const dateTime = useMoment();
   return (
-    /** 日付 */
-    <div className='bg-red-100 h-20 flex items-center justify-center'>
-      <div className='text-center text-4xl'>{time}</div>
+    <div className='bg-red-100 h-20 flex items-center justify-center gap-10'>
+      <div className='flex relative items-center'>
+        <div className='text-center text-4xl'>{dateTime}</div>
+      </div>
     </div>
   );
 };

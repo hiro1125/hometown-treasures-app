@@ -1,6 +1,8 @@
-'use client';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
+
+/** サーバーから時間のAPIを常に取得 */
+const URL = 'https://worldtimeapi.org/api/timezone/Asia/Tokyo';
 
 moment.updateLocale('ja', {
   weekdays: [
@@ -14,15 +16,37 @@ moment.updateLocale('ja', {
   ],
 });
 
+export const fetchServerTime = async () => {
+  try {
+    const response = await fetch(URL);
+
+    /** 時間などの情報をJSON形式で取得 */
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const useMoment = () => {
-  const [dateTime, setDateTime] = useState(
-    moment().format('YYYY[年]MM[月]DD[日] (dddd) HH時mm分ss秒')
-  );
+  const [dateTime, setDateTime] = useState('');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setDateTime(moment().format('YYYY[年]MM[月]DD[日] (dddd) HH時mm分ss秒'));
-    }, 1000);
+    const fetchAndSetTime = async () => {
+      try {
+        const serverTime = await fetchServerTime();
+
+        if (serverTime) {
+          const date = moment(serverTime.dateTime);
+          setDateTime(date.format('YYYY年MM月DD日 (dddd) HH時mm分ss秒'));
+        }
+      } catch (error) {
+        throw error;
+      }
+    };
+    fetchAndSetTime();
+    const interval = setInterval(fetchAndSetTime, 1000);
     return () => clearInterval(interval);
   }, []);
   return dateTime;
