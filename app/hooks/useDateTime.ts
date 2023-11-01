@@ -14,7 +14,7 @@ moment.updateLocale('ja', {
   ],
 });
 
-export const useDateTime = () => {
+export const useDateTime = (formatOption: string) => {
   const [dateTime, setDateTime] = useState('');
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const useDateTime = () => {
 
         if (serverTime) {
           const date = moment(serverTime.dateTime);
-          setDateTime(date.format('YYYY年MM月DD日 (dddd) HH時mm分ss秒'));
+          setDateTime(date.format(formatOption));
         }
       } catch (error) {
         throw error;
@@ -33,6 +33,6 @@ export const useDateTime = () => {
     fetchAndSetTime();
     const interval = setInterval(fetchAndSetTime, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [formatOption]);
   return dateTime;
 };
