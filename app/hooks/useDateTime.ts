@@ -33,6 +33,6 @@ export const useDateTime = (formatOption: string) => {
     fetchAndSetTime();
     const interval = setInterval(fetchAndSetTime, 1000);
     return () => clearInterval(interval);
-  }, [formatOption]);
+  }, [formatOption, dateTime]);
   return dateTime;
 };
