@@ -3,13 +3,13 @@ import React from 'react';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
 const AtomAddition = () => (
-  <div>
+  <>
     <div className='left-2 flex items-center justify-center cursor-pointer'>
       <Link href={'register'} target='blank'>
         <IoIosAddCircleOutline size={50} />
       </Link>
     </div>
-  </div>
+  </>
 );
 
 export default AtomAddition;
