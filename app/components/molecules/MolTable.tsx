@@ -25,7 +25,7 @@ const MolTable = () => {
             </th>
           </tr>
           {listData.map((item, index) => (
-            <tr key={index} className='border-2 h-24 text-xl'>
+            <tr key={index} className='border-2 text-xl'>
               <td className='border-2 p-2 text-center border-black'>
                 {item.orderDate}
               </td>
