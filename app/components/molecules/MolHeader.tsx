@@ -5,7 +5,7 @@ import AtomDateTime from '@/app/components/atoms/AtomDateTime';
 import AtomsSearch from '@/app/components/atoms/AtomsSearch';
 
 const MolHeader = () => (
-  <div className='bg-red-100 h-20 flex items-center justify-center gap-10'>
+  <div className='bg-gray-200 h-20 flex items-center justify-center gap-10'>
     <AtomDateTime />
     <AtomsSearch />
     <AtomAddition />
