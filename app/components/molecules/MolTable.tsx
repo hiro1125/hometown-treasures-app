@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import moment from 'moment';
 import { INDEX_TITLE_TEXT } from '@/app/contents';
 import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 
@@ -27,7 +28,7 @@ const MolTable = () => {
           {listData.map((item, index) => (
             <tr key={index} className='border-2 text-xl'>
               <td className='border-2 p-2 text-center border-black'>
-                {item.orderDate}
+                {moment(item.orderDate).format('YYYY年M年D日')}
               </td>
               <td className='border-2 p-2 border-black'>{item.productName}</td>
               <td className='border-2 p-2 text-center border-black'>
