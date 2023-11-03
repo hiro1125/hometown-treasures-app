@@ -1,6 +1,6 @@
 'use client';
-import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 import { useState } from 'react';
+import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 
 const Page = () => {
   const { handleAddData } = useDataUpdate();
