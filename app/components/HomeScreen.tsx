@@ -7,7 +7,9 @@ const HomeScreen = () => (
   <div>
     <MolHeader />
     <MolTotalAmount />
-    <MolTable />
+    <div className={'p-10'}>
+      <MolTable />
+    </div>
   </div>
 );
 
