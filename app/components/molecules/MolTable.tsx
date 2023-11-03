@@ -1,47 +1,50 @@
 'use client';
-import React from 'react';
-import moment from 'moment';
 import { INDEX_TITLE_TEXT } from '@/app/contents';
 import { useDataUpdate } from '@/app/hooks/useDataUpdate';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+import moment from 'moment';
+import React from 'react';
 
 const MolTable = () => {
   const { listData } = useDataUpdate();
 
   return (
-    <div className='p-6'>
-      <table className='w-full border-2'>
-        <tbody>
-          <tr>
-            <th className='border-2 p-4 border-black text-4xl '>
-              {INDEX_TITLE_TEXT.DATE}
-            </th>
-            <th className='border-2 p-3 border-black text-4xl'>
-              {INDEX_TITLE_TEXT.PRODUCT}
-            </th>
-            <th className='border-2 p-3 border-black text-4xl'>
-              {INDEX_TITLE_TEXT.DOMICILE}
-            </th>
-            <th className='border-2 p-3 border-black text-4xl'>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 900 }}>
+        <TableHead>
+          <TableRow>
+            <TableCell>{INDEX_TITLE_TEXT.DATE}</TableCell>
+            <TableCell align='left'>{INDEX_TITLE_TEXT.PRODUCT}</TableCell>
+            <TableCell align='center'>{INDEX_TITLE_TEXT.DOMICILE}</TableCell>
+            <TableCell align='center'>
               {INDEX_TITLE_TEXT.AMOUNT_OF_MONEY}
-            </th>
-          </tr>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {listData.map((item, index) => (
-            <tr key={index} className='border-2 text-xl'>
-              <td className='border-2 p-2 text-center border-black'>
-                {moment(item.orderDate).format('YYYY年M年D日')}
-              </td>
-              <td className='border-2 p-2 border-black'>{item.productName}</td>
-              <td className='border-2 p-2 text-center border-black'>
-                {item.address}
-              </td>
-              <td className='border-2 p-2 text-center border-black'>
+            <TableRow key={index}>
+              <TableCell component='th' scope='row'>
+                {moment(item.orderDate).format('YYYY年M月D日')}
+              </TableCell>
+              <TableCell align='left'>{item.productName}</TableCell>
+              <TableCell align='center'>{item.address}</TableCell>
+              <TableCell align='center'>
                 {item.amountOfMoney.toLocaleString('ja-JP')}円
-              </td>
-            </tr>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
