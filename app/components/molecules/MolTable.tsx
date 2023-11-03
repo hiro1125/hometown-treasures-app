@@ -19,7 +19,7 @@ const MolTable = () => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 900 }}>
-        <TableHead>
+        <TableHead className={'bg-gray-200'}>
           <TableRow>
             <TableCell>{INDEX_TITLE_TEXT.DATE}</TableCell>
             <TableCell align='left'>{INDEX_TITLE_TEXT.PRODUCT}</TableCell>
@@ -31,7 +31,7 @@ const MolTable = () => {
         </TableHead>
         <TableBody>
           {listData.map((item, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} hover>
               <TableCell component='th' scope='row'>
                 {moment(item.orderDate).format('YYYY年M月D日')}
               </TableCell>
