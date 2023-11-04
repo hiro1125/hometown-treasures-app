@@ -1,10 +1,16 @@
 import React from 'react';
-import { IoMdSearch } from 'react-icons/io';
-
+import SearchIcon from '@mui/icons-material/Search';
+import { Search, SearchIconWrapper, StyledInputBase } from '@/app/style';
 const AtomsSearch = () => (
-  <div className='left-2 flex items-center justify-center'>
-    <IoMdSearch size={50} />
-  </div>
+  <Search>
+    <SearchIconWrapper>
+      <SearchIcon />
+    </SearchIconWrapper>
+    <StyledInputBase
+      placeholder='Search…'
+      inputProps={{ 'aria-label': 'search' }}
+    />
+  </Search>
 );
 
 export default AtomsSearch;
