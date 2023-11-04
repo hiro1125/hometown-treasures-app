@@ -1,16 +1,20 @@
 'use client';
 import { useState } from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { Card, CardContent } from '@mui/material';
 
 const MolTotalAmount = () => {
-  const [count, setCount] = useState<number>(50000);
+  const [count, setCount] = useState(50000);
+
   return (
-    <div className='flex items-center justify-center'>
-      <div className='bg-violet-100 w-1/3 h-20 m-10 flex items-center justify-center'>
-        <p className='text-4xl'>
+    <Card sx={{ minWidth: 275 }} className='m-10'>
+      <CardContent className='bg-violet-100 flex items-center justify-center'>
+        <Typography className='text-4xl'>
           寄付金額残高 {count.toLocaleString('ja-JP')} 円
-        </p>
-      </div>
-    </div>
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 
