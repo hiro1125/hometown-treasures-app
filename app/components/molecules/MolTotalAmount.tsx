@@ -8,7 +8,7 @@ const MolTotalAmount = () => {
 
   return (
     <Card sx={{ minWidth: 275 }} className='m-10'>
-      <CardContent className='bg-violet-100 flex items-center justify-center'>
+      <CardContent className='bg-gray-100 flex items-center justify-center'>
         <Typography className='text-4xl'>
           寄付金額残高 {count.toLocaleString('ja-JP')} 円
         </Typography>
