@@ -6,10 +6,7 @@ const AtomsSearch = () => (
     <SearchIconWrapper>
       <SearchIcon />
     </SearchIconWrapper>
-    <StyledInputBase
-      placeholder='Search…'
-      inputProps={{ 'aria-label': 'search' }}
-    />
+    <StyledInputBase inputProps={{ 'aria-label': 'search' }} />
   </Search>
 );
 
