@@ -7,7 +7,7 @@ import AtomsSearch from '@/app/components/atoms/AtomsSearch';
 
 const MolHeader = () => (
   <Box sx={{ flexGrow: 1 }}>
-    <AppBar className='static flex items-center justify-center gap-10'>
+    <AppBar className={'static flex items-center justify-center gap-10'}>
       <Toolbar>
         <AtomDateTime />
         <AtomsSearch />

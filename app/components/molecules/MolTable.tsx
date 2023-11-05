@@ -23,7 +23,9 @@ const MolTable = () => {
           <TableHead className={'sticky top-0 bg-blue-200'}>
             <TableRow>
               <TableCell>{INDEX_TITLE_TEXT.DATE}</TableCell>
-              <TableCell align='left'>{INDEX_TITLE_TEXT.PRODUCT}</TableCell>
+              <TableCell className={'text-left'}>
+                {INDEX_TITLE_TEXT.PRODUCT}
+              </TableCell>
               <TableCell className={'text-center'}>
                 {INDEX_TITLE_TEXT.DOMICILE}
               </TableCell>
@@ -34,11 +36,16 @@ const MolTable = () => {
           </TableHead>
           <TableBody>
             {listData.map((item, index) => (
-              <TableRow key={index} className={'hover:bg-gray-100'}>
-                <TableCell className='font-medium'>
+              <TableRow
+                key={index}
+                className={'hover:bg-gray-100 cursor-pointer'}
+              >
+                <TableCell className={'font-medium'}>
                   {moment(item.orderDate).format('YYYY年M月D日')}
                 </TableCell>
-                <TableCell align='left'>{item.productName}</TableCell>
+                <TableCell className={'text-left'}>
+                  {item.productName}
+                </TableCell>
                 <TableCell className={'text-center'}>{item.address}</TableCell>
                 <TableCell className={'text-center'}>
                   {item.amountOfMoney.toLocaleString('ja-JP')}円
