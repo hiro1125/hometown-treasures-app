@@ -13,8 +13,19 @@ const MolModalForm = () => {
   const [address, setAddress] = useState('');
   const [amount, setAmount] = useState('');
 
+  const [orderDateError, setOrderDateError] = useState(false);
+  const [productNameError, setProductNameError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [amountError, setAmountError] = useState(false);
+
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setOrderDateError(false);
+    setProductNameError(false);
+    setAddressError(false);
+    setAmountError(false);
+  };
 
   const handleAddButtonClick = () => {
     if (orderDate && productName && address && amount) {
@@ -27,7 +38,10 @@ const MolModalForm = () => {
       handleAddData(newData);
       handleClose();
     } else {
-      alert('全てのフィールドを入力してください');
+      setOrderDateError(!orderDate);
+      setProductNameError(!productName);
+      setAddressError(!address);
+      setAmountError(!amount);
     }
   };
 
@@ -63,7 +77,12 @@ const MolModalForm = () => {
                 required
                 id='outlined-required'
                 value={orderDate}
-                onChange={(e) => setOrderDate(e.target.value)}
+                onChange={(e) => {
+                  setOrderDate(e.target.value);
+                  setOrderDateError(false);
+                }}
+                error={orderDateError}
+                helperText={orderDateError ? '注文日を入力してください' : ''}
                 className='border rounded-lg p-2 mt-3'
               />
 
@@ -74,17 +93,28 @@ const MolModalForm = () => {
                 required
                 fullWidth
                 value={productName}
-                onChange={(e) => setProductName(e.target.value)}
+                onChange={(e) => {
+                  setProductName(e.target.value);
+                  setProductNameError(false);
+                }}
+                error={productNameError}
+                helperText={productNameError ? '商品名を入力してください' : ''}
                 className='border rounded-lg p-2 mt-3'
               />
 
               <TextField
                 type='text'
                 label='住所'
+                required
                 placeholder='例）佐賀県 吉野ヶ里町'
                 fullWidth
                 value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                  setAddressError(false);
+                }}
+                error={addressError}
+                helperText={addressError ? '住所を入力してください' : ''}
                 className='border rounded-lg p-2 mt-3'
               />
 
@@ -94,7 +124,12 @@ const MolModalForm = () => {
                 placeholder='例）10000'
                 required
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                  setAmountError(false);
+                }}
+                error={amountError}
+                helperText={amountError ? '金額を入力してください' : ''}
                 className='border rounded-lg p-2 mt-3'
               />
               <div className='flex justify-around mt-3'>
