@@ -46,7 +46,7 @@ const MolModalForm = () => {
   };
 
   return (
-    <div>
+    <>
       <Button className='text-white' onClick={handleOpen}>
         <AtomAddition />
       </Button>
@@ -152,7 +152,7 @@ const MolModalForm = () => {
           </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 };
 
