@@ -5,7 +5,7 @@ export const INDEX_TITLE_TEXT = {
   AMOUNT_OF_MONEY: '金額',
 };
 
-export const INPUT_TEXT = {
+export const LABEL_TEXT = {
   PASSWORD: 'パスワード',
   PASSWORD_FOR_CONFIRMATION: 'パスワード（確認用）',
 };
