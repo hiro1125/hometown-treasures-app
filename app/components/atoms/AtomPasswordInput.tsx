@@ -17,9 +17,7 @@ const AtomPasswordInput: FC<Props> = ({
   handleMouseDownPassword,
 }) => (
   <TextField
-    id='outlined-adornment-password-2'
     label={label}
-    multiline
     fullWidth
     variant='outlined'
     type={showPassword ? 'text' : 'password'}
