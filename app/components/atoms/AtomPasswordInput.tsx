@@ -4,19 +4,21 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 type Props = {
+  label: string;
   showPassword: boolean;
   handleClickShowPassword: () => void;
   handleMouseDownPassword: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const AtomPasswordInput: FC<Props> = ({
+  label,
   showPassword,
   handleClickShowPassword,
   handleMouseDownPassword,
 }) => (
   <TextField
     id='outlined-adornment-password-2'
-    label='パスワード'
+    label={label}
     multiline
     fullWidth
     variant='outlined'

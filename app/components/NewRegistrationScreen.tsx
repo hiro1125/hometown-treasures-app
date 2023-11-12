@@ -7,6 +7,7 @@ import { Button, Grid } from '@mui/material';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 import LoginScreen from '@/app/components/LoginScreen';
+import { INPUT_TEXT } from '@/app/contents';
 
 const NewRegistrationScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -49,6 +50,7 @@ const NewRegistrationScreen = () => {
           className={'pb-10'}
         >
           <AtomPasswordInput
+            label={INPUT_TEXT.PASSWORD}
             showPassword={showPassword}
             handleClickShowPassword={handleClickShowPassword}
             handleMouseDownPassword={handleMouseDownPassword}
@@ -62,6 +64,7 @@ const NewRegistrationScreen = () => {
           className={'pb-10'}
         >
           <AtomPasswordInput
+            label={INPUT_TEXT.PASSWORD_FOR_CONFIRMATION}
             showPassword={showPassword1}
             handleClickShowPassword={handleClickShowPassword1}
             handleMouseDownPassword={handleMouseDownPassword}

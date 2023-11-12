@@ -8,6 +8,7 @@ import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 import AtomLoginButton from '@/app/components/atoms/AtomLoginButton';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import NewRegistrationScreen from '@/app/components/NewRegistrationScreen';
+import { INPUT_TEXT } from '@/app/contents';
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -48,6 +49,7 @@ const LoginScreen = () => {
           className={'pb-10'}
         >
           <AtomPasswordInput
+            label={INPUT_TEXT.PASSWORD}
             showPassword={showPassword}
             handleClickShowPassword={handleClickShowPassword}
             handleMouseDownPassword={handleMouseDownPassword}
