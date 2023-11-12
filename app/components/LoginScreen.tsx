@@ -3,17 +3,10 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {
-  Button,
-  FormControl,
-  Grid,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-} from '@mui/material';
-import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button, Grid } from '@mui/material';
+import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
+import AtomLoginButton from '@/app/components/atoms/AtomLoginButton';
+import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -37,16 +30,7 @@ const LoginScreen = () => {
           alignItems='center'
           className={'pt-10 pb-10'}
         >
-          <TextField
-            label='メールアドレス'
-            variant='outlined'
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <AccountCircle style={{ color: 'gray' }} className='mr-4' />
-              ),
-            }}
-          />
+          <AtomEmailInput />
         </Grid>
         <Grid
           container
@@ -55,47 +39,18 @@ const LoginScreen = () => {
           alignItems='center'
           className={'pb-10'}
         >
-          <FormControl variant='outlined' fullWidth>
-            <InputLabel htmlFor='outlined-adornment-password'>
-              パスワード
-            </InputLabel>
-            <OutlinedInput
-              type={showPassword ? 'text' : 'password'}
-              endAdornment={
-                <InputAdornment position='end'>
-                  <IconButton
-                    aria-label='toggle password visibility'
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge='end'
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label='Password'
-            />
-          </FormControl>
+          <AtomPasswordInput
+            showPassword={showPassword}
+            handleClickShowPassword={handleClickShowPassword}
+            handleMouseDownPassword={handleMouseDownPassword}
+          />
         </Grid>
-        <center>
-          <Button
-            type='button'
-            variant='contained'
-            fullWidth
-            className={
-              'bg-blue-500 hover:bg-blue-600 text-white text-lg py-3 px-6'
-            }
-          >
-            ログイン
-          </Button>
-        </center>
-
+        <AtomLoginButton />
         <div className={'flex items-center space-x-1 m-10'}>
           <div className={'flex-1 border-b border-gray-500'}></div>
           <span className={'text-gray-500 px-3'}>もしくは</span>
           <div className={'flex-1 border-b border-gray-500'}></div>
         </div>
-
         <center>
           <Button
             type='button'

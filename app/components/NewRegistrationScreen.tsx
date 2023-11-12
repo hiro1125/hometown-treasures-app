@@ -14,13 +14,15 @@ import {
   TextField,
 } from '@mui/material';
 import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
+import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
+import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 
 const NewRegistrationScreen = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
-  const [showPassword2, setShowPassword2] = useState(false);
 
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
-  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
   const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -39,16 +41,19 @@ const NewRegistrationScreen = () => {
           alignItems='center'
           className={'pt-10 pb-10'}
         >
-          <TextField
-            label='メールアドレス'
-            multiline
-            variant='outlined'
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <AccountCircle style={{ color: 'gray' }} className='mr-4' />
-              ),
-            }}
+          <AtomEmailInput />
+        </Grid>
+        <Grid
+          container
+          direction='column'
+          justifyContent='center'
+          alignItems='center'
+          className={'pb-10'}
+        >
+          <AtomPasswordInput
+            showPassword={showPassword}
+            handleClickShowPassword={handleClickShowPassword}
+            handleMouseDownPassword={handleMouseDownPassword}
           />
         </Grid>
         <Grid
@@ -58,56 +63,10 @@ const NewRegistrationScreen = () => {
           alignItems='center'
           className={'pb-10'}
         >
-          <FormControl variant='outlined' fullWidth>
-            <InputLabel htmlFor='outlined-adornment-password'>
-              パスワード
-            </InputLabel>
-            <OutlinedInput
-              type={showPassword1 ? 'text' : 'password'}
-              endAdornment={
-                <InputAdornment position='end'>
-                  <IconButton
-                    aria-label='toggle password visibility'
-                    onClick={handleClickShowPassword1}
-                    onMouseDown={handleMouseDownPassword}
-                    edge='end'
-                  >
-                    {showPassword1 ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label='Password'
-            />
-          </FormControl>
-        </Grid>
-        <Grid
-          container
-          direction='column'
-          justifyContent='center'
-          alignItems='center'
-          className={'pb-10'}
-        >
-          <TextField
-            id='outlined-adornment-password-2'
-            label='パスワードaaaaaa'
-            multiline
-            fullWidth
-            variant='outlined'
-            type={showPassword2 ? 'text' : 'password'}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <IconButton
-                    aria-label='toggle password visibility'
-                    onClick={handleClickShowPassword2}
-                    onMouseDown={handleMouseDownPassword}
-                    edge='end'
-                  >
-                    {showPassword2 ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
+          <AtomPasswordInput
+            showPassword={showPassword1}
+            handleClickShowPassword={handleClickShowPassword1}
+            handleMouseDownPassword={handleMouseDownPassword}
           />
         </Grid>
 
