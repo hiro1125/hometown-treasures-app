@@ -1,11 +1,5 @@
 import React, { FC } from 'react';
-import {
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  IconButton,
-  InputAdornment,
-} from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
@@ -20,11 +14,15 @@ const AtomPasswordInput: FC<Props> = ({
   handleClickShowPassword,
   handleMouseDownPassword,
 }) => (
-  <FormControl variant='outlined' fullWidth>
-    <InputLabel htmlFor='outlined-adornment-password'>パスワード</InputLabel>
-    <OutlinedInput
-      type={showPassword ? 'text' : 'password'}
-      endAdornment={
+  <TextField
+    id='outlined-adornment-password-2'
+    label='パスワード'
+    multiline
+    fullWidth
+    variant='outlined'
+    type={showPassword ? 'text' : 'password'}
+    InputProps={{
+      endAdornment: (
         <InputAdornment position='end'>
           <IconButton
             aria-label='toggle password visibility'
@@ -35,10 +33,9 @@ const AtomPasswordInput: FC<Props> = ({
             {showPassword ? <VisibilityOff /> : <Visibility />}
           </IconButton>
         </InputAdornment>
-      }
-      label='Password'
-    />
-  </FormControl>
+      ),
+    }}
+  />
 );
 
 export default AtomPasswordInput;
