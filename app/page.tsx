@@ -1,9 +1,9 @@
-import HomeScreen from '@/app/components/HomeScreen';
+import LoginScreen from '@/app/components/LoginScreen';
 
 export default function Home() {
   return (
     <main>
-      <HomeScreen />
+      <LoginScreen />
     </main>
   );
 }

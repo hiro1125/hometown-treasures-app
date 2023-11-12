@@ -3,23 +3,15 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {
-  Button,
-  FormControl,
-  Grid,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-} from '@mui/material';
-import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button, Grid } from '@mui/material';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
+import LoginScreen from '@/app/components/LoginScreen';
 
 const NewRegistrationScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
+  const [isLoginScreen, setIsLoginScreen] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
@@ -28,7 +20,13 @@ const NewRegistrationScreen = () => {
     e.preventDefault();
   };
 
-  return (
+  const handleLoginClick = () => {
+    setIsLoginScreen(true);
+  };
+
+  return isLoginScreen ? (
+    <LoginScreen />
+  ) : (
     <Container maxWidth='sm' className={'mt-28 p-6'}>
       <Typography variant='h4' gutterBottom className={' text-center'}>
         ふるさと納税記録帳
@@ -80,6 +78,17 @@ const NewRegistrationScreen = () => {
             新規登録
           </Button>
         </center>
+        <div className=' text-center p-10'>
+          <p>
+            アカウントをお持ちの方はこちらです。
+            <span
+              className='cursor-pointer font-semibold'
+              onClick={handleLoginClick}
+            >
+              ログイン
+            </span>
+          </p>
+        </div>
       </Box>
     </Container>
   );

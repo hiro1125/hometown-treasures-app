@@ -7,9 +7,11 @@ import { Button, Grid } from '@mui/material';
 import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 import AtomLoginButton from '@/app/components/atoms/AtomLoginButton';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
+import NewRegistrationScreen from '@/app/components/NewRegistrationScreen';
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoginScreen, setIsLoginScreen] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -17,7 +19,13 @@ const LoginScreen = () => {
     e.preventDefault();
   };
 
-  return (
+  const handleRegistrationClick = () => {
+    setIsLoginScreen(true);
+  };
+
+  return isLoginScreen ? (
+    <NewRegistrationScreen />
+  ) : (
     <Container maxWidth='sm' className={'mt-28 p-6'}>
       <Typography variant='h4' gutterBottom className={' text-center'}>
         ふるさと納税記録帳
@@ -57,6 +65,7 @@ const LoginScreen = () => {
             fullWidth
             variant='outlined'
             className={'text-blue-500 border border-blue-500 text-lg py-3 px-6'}
+            onClick={handleRegistrationClick}
           >
             新規登録
           </Button>
