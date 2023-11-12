@@ -21,6 +21,10 @@ const MolModalForm = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
+    setOrderDate('');
+    setProductName('');
+    setAddress('');
+    setAmount('');
     setOrderDateError(false);
     setProductNameError(false);
     setAddressError(false);
@@ -122,11 +126,15 @@ const MolModalForm = () => {
                 type='number'
                 label='金額'
                 placeholder='例）10000'
+                minRows='0'
                 required
                 value={amount}
                 onChange={(e) => {
                   setAmount(e.target.value);
                   setAmountError(false);
+                }}
+                inputProps={{
+                  min: 0,
                 }}
                 error={amountError}
                 helperText={amountError ? '金額を入力してください' : ''}
