@@ -61,7 +61,7 @@ const MolModalForm = () => {
     <>
       <ListItemButton onClick={handleOpen}>
         <ListItemIcon>
-          <AddTaskIcon />
+          <AddTaskIcon color='primary' />
         </ListItemIcon>
         <ListItemText primary='登録' />
       </ListItemButton>
