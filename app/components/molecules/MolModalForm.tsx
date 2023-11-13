@@ -1,8 +1,16 @@
 'use client';
-import AtomAddition from '@/app/components/atoms/AtomAddition';
-import { useDataUpdate } from '@/app/hooks/useDataUpdate';
-import { Button, Modal, TextField } from '@mui/material';
+
 import React, { useState } from 'react';
+import {
+  Button,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Modal,
+  TextField,
+} from '@mui/material';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 
 const MolModalForm = () => {
   const { handleAddData } = useDataUpdate();
@@ -51,9 +59,12 @@ const MolModalForm = () => {
 
   return (
     <>
-      <Button className='text-white' onClick={handleOpen}>
-        <AtomAddition />
-      </Button>
+      <ListItemButton onClick={handleOpen}>
+        <ListItemIcon>
+          <AddTaskIcon />
+        </ListItemIcon>
+        <ListItemText primary='登録' />
+      </ListItemButton>
       <Modal
         open={open}
         onClose={handleClose}

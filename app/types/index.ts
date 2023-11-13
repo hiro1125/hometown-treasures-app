@@ -4,3 +4,7 @@ export type ApiListData = {
   address: string;
   amountOfMoney: number;
 };
+
+export type AppBarProps = {
+  open?: boolean;
+};
