@@ -11,9 +11,11 @@ import {
 } from '@mui/material';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import { useDataUpdate } from '@/app/hooks/useDataUpdate';
+import { useDateTime } from '@/app/hooks/useDateTime';
 
 const MolModalForm = () => {
   const { handleAddData } = useDataUpdate();
+  const dateTime = useDateTime('YYYY/MM/DD');
 
   const [open, setOpen] = useState(false);
   const [orderDate, setOrderDate] = useState('');
@@ -88,7 +90,9 @@ const MolModalForm = () => {
             </div>
             <form className='mt-4'>
               <TextField
-                type='date'
+                type='text'
+                label='注文日'
+                placeholder={dateTime}
                 required
                 id='outlined-required'
                 value={orderDate}
