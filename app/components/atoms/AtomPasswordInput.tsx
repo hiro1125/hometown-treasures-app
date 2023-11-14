@@ -8,6 +8,7 @@ type Props = {
   showPassword: boolean;
   handleClickShowPassword: () => void;
   handleMouseDownPassword: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const AtomPasswordInput: FC<Props> = ({
@@ -15,12 +16,14 @@ const AtomPasswordInput: FC<Props> = ({
   showPassword,
   handleClickShowPassword,
   handleMouseDownPassword,
+  onChange,
 }) => (
   <TextField
     label={label}
     fullWidth
     variant='outlined'
     type={showPassword ? 'text' : 'password'}
+    onChange={onChange}
     InputProps={{
       endAdornment: (
         <InputAdornment position='end'>

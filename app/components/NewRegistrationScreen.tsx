@@ -8,11 +8,19 @@ import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 import LoginScreen from '@/app/components/LoginScreen';
 import { LABEL_TEXT } from '@/app/contents';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/app/firebase';
+import HomeScreen from '@/app/components/HomeScreen';
 
 const NewRegistrationScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
   const [isLoginScreen, setIsLoginScreen] = useState(false);
+  const [isLoginSuccess, setIsLoginSuccess] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
@@ -24,6 +32,32 @@ const NewRegistrationScreen = () => {
   const handleLoginClick = () => {
     setIsLoginScreen(true);
   };
+
+  const handleLogin = async () => {
+    try {
+      if (password !== confirmPassword) {
+        alert('パスワードが一致しません');
+        return;
+      }
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      if (user) {
+        setIsLoginSuccess(true);
+      } else {
+        alert('登録に失敗しました');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (isLoginSuccess) {
+    return <HomeScreen />;
+  }
 
   return isLoginScreen ? (
     <LoginScreen />
@@ -40,7 +74,7 @@ const NewRegistrationScreen = () => {
           alignItems='center'
           className={'pt-10 pb-10'}
         >
-          <AtomEmailInput />
+          <AtomEmailInput onChange={(e) => setEmail(e.target.value)} />
         </Grid>
         <Grid
           container
@@ -54,6 +88,7 @@ const NewRegistrationScreen = () => {
             showPassword={showPassword}
             handleClickShowPassword={handleClickShowPassword}
             handleMouseDownPassword={handleMouseDownPassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Grid>
         <Grid
@@ -68,6 +103,7 @@ const NewRegistrationScreen = () => {
             showPassword={showPassword1}
             handleClickShowPassword={handleClickShowPassword1}
             handleMouseDownPassword={handleMouseDownPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Grid>
 
@@ -77,6 +113,9 @@ const NewRegistrationScreen = () => {
             fullWidth
             variant='outlined'
             className={'text-blue-500 border border-blue-500 text-lg py-3 px-6'}
+            onClick={() => {
+              handleLogin();
+            }}
           >
             新規登録
           </Button>
