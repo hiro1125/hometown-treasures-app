@@ -33,19 +33,25 @@ const LoginScreen = () => {
 
   const handleLogin = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      if (user) {
-        setIsLoginSuccess(true);
+      if (email && password) {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+        if (user) {
+          setIsLoginSuccess(true);
+        }
+      } else {
+        console.log('ログインできました。');
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  const isLoginDisabled = !(email && password);
 
   if (isLoginSuccess) {
     return <HomeScreen />;
@@ -87,6 +93,7 @@ const LoginScreen = () => {
           onClick={() => {
             handleLogin();
           }}
+          disabled={isLoginDisabled}
         />
         <div className={'flex items-center space-x-1 m-10'}>
           <div className={'flex-1 border-b border-gray-500'}></div>
