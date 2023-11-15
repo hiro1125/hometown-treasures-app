@@ -9,10 +9,17 @@ import AtomLoginButton from '@/app/components/atoms/AtomLoginButton';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import NewRegistrationScreen from '@/app/components/NewRegistrationScreen';
 import { LABEL_TEXT } from '@/app/contents';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/app/firebase';
+import HomeScreen from '@/app/components/HomeScreen';
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoginScreen, setIsLoginScreen] = useState(false);
+  const [isLoginSuccess, setIsLoginSuccess] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -23,6 +30,26 @@ const LoginScreen = () => {
   const handleRegistrationClick = () => {
     setIsLoginScreen(true);
   };
+
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      if (user) {
+        setIsLoginSuccess(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (isLoginSuccess) {
+    return <HomeScreen />;
+  }
 
   return isLoginScreen ? (
     <NewRegistrationScreen />
@@ -39,7 +66,7 @@ const LoginScreen = () => {
           alignItems='center'
           className={'pt-10 pb-10'}
         >
-          <AtomEmailInput />
+          <AtomEmailInput onChange={(e) => setEmail(e.target.value)} />
         </Grid>
         <Grid
           container
@@ -53,9 +80,14 @@ const LoginScreen = () => {
             showPassword={showPassword}
             handleClickShowPassword={handleClickShowPassword}
             handleMouseDownPassword={handleMouseDownPassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Grid>
-        <AtomLoginButton />
+        <AtomLoginButton
+          onClick={() => {
+            handleLogin();
+          }}
+        />
         <div className={'flex items-center space-x-1 m-10'}>
           <div className={'flex-1 border-b border-gray-500'}></div>
           <span className={'text-gray-500 px-3'}>もしくは</span>

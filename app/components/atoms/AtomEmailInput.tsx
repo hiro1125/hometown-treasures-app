@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
 type EmailProps = {
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const AtomEmailInput: FC<EmailProps> = ({ onChange }) => (

@@ -8,7 +8,7 @@ type Props = {
   showPassword: boolean;
   handleClickShowPassword: () => void;
   handleMouseDownPassword: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const AtomPasswordInput: FC<Props> = ({
