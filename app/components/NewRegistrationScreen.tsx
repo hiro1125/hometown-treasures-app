@@ -10,13 +10,11 @@ import LoginScreen from '@/app/components/LoginScreen';
 import { LABEL_TEXT } from '@/app/contents';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/app/firebase';
-import HomeScreen from '@/app/components/HomeScreen';
 
 const NewRegistrationScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
   const [isLoginScreen, setIsLoginScreen] = useState(false);
-  const [isLoginSuccess, setIsLoginSuccess] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,19 +43,10 @@ const NewRegistrationScreen = () => {
         password
       );
       const user = userCredential.user;
-      if (user) {
-        setIsLoginSuccess(true);
-      } else {
-        alert('登録に失敗しました');
-      }
     } catch (error) {
       console.log(error);
     }
   };
-
-  if (isLoginSuccess) {
-    return <HomeScreen />;
-  }
 
   return isLoginScreen ? (
     <LoginScreen />
