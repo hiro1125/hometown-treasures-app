@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { auth } from '@/app/firebase';
 
-const AtomSignOutButton = () => {
+const MolModalSignOutButton = () => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -64,4 +64,4 @@ const AtomSignOutButton = () => {
   );
 };
 
-export default AtomSignOutButton;
+export default MolModalSignOutButton;

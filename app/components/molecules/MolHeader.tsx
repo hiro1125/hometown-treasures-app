@@ -8,7 +8,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AtomDateTime from '@/app/components/atoms/AtomDateTime';
 import AtomsSearch from '@/app/components/atoms/AtomsSearch';
 import MolModalForm from '@/app/components/molecules/MolModalForm';
-import AtomSignOutButton from '@/app/components/atoms/AtomSignOutButton';
+import MolModalSignOutButton from '@/app/components/molecules/MolModalSignOutButton';
 
 const drawerWidth = 240;
 
@@ -62,7 +62,7 @@ const MolHeader = () => {
           <Divider />
           <MolModalForm />
           <Divider />
-          <AtomSignOutButton />
+          <MolModalSignOutButton />
           <Divider />
         </List>
       </Drawer>
