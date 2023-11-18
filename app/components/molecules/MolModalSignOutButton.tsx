@@ -10,6 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 import { auth } from '@/app/firebase';
+import AtomCancelButton from '@/app/components/atoms/AtomCancelButton';
 
 const MolModalSignOutButton = () => {
   const [open, setOpen] = useState(false);
@@ -41,14 +42,7 @@ const MolModalSignOutButton = () => {
             <Typography className='mb-5' variant='h6' gutterBottom>
               本当にサインアウトしますか？
             </Typography>
-            <Button
-              className={
-                'bg-blue-400 hover:bg-blue-500 text-white text-lg py-3 px-6 rounded-full mr-3'
-              }
-              onClick={handleClose}
-            >
-              キャンセル
-            </Button>
+            <AtomCancelButton onClick={handleClose} />
             <Button
               className={
                 'bg-blue-400 hover:bg-blue-500 text-white text-lg py-3 px-12 rounded-full'

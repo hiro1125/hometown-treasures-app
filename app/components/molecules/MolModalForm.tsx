@@ -12,6 +12,7 @@ import {
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 import { useDateTime } from '@/app/hooks/useDateTime';
+import AtomCancelButton from '@/app/components/atoms/AtomCancelButton';
 
 const MolModalForm = () => {
   const { handleAddData } = useDataUpdate();
@@ -156,13 +157,7 @@ const MolModalForm = () => {
                 className='border rounded-lg p-2 mt-3'
               />
               <div className='flex justify-around mt-3'>
-                <Button
-                  type='button'
-                  className='bg-blue-500 hover:bg-blue-600 text-white text-lg py-3 px-6 rounded-full'
-                  onClick={handleClose}
-                >
-                  キャンセル
-                </Button>
+                <AtomCancelButton onClick={handleClose} />
                 <Button
                   type='button'
                   className='bg-blue-500 hover:bg-blue-600 text-white text-lg py-3 px-12 rounded-full'
