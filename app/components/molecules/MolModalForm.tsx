@@ -13,6 +13,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 import { useDateTime } from '@/app/hooks/useDateTime';
 import AtomCancelButton from '@/app/components/atoms/AtomCancelButton';
+import { BUTTON_TEXT } from '@/app/contents';
 
 const MolModalForm = () => {
   const { handleAddData } = useDataUpdate();
@@ -163,7 +164,7 @@ const MolModalForm = () => {
                   className='bg-blue-500 hover:bg-blue-600 text-white text-lg py-3 px-12 rounded-full'
                   onClick={handleAddButtonClick}
                 >
-                  登録
+                  {BUTTON_TEXT.REGISTRATION}
                 </Button>
               </div>
             </form>

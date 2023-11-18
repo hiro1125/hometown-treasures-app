@@ -7,7 +7,7 @@ import { Button, Grid } from '@mui/material';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 import LoginScreen from '@/app/components/LoginScreen';
-import { LABEL_TEXT } from '@/app/contents';
+import { BUTTON_TEXT, LABEL_TEXT } from '@/app/contents';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/app/firebase';
 
@@ -106,7 +106,7 @@ const NewRegistrationScreen = () => {
               handleLogin();
             }}
           >
-            新規登録
+            {BUTTON_TEXT.NEW_REGISTRATION}
           </Button>
         </center>
         <div className=' text-center p-10'>
@@ -116,7 +116,7 @@ const NewRegistrationScreen = () => {
               className='cursor-pointer font-semibold'
               onClick={handleLoginClick}
             >
-              ログイン
+              {BUTTON_TEXT.LOGIN}
             </span>
           </p>
         </div>

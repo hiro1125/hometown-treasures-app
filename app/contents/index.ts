@@ -9,3 +9,11 @@ export const LABEL_TEXT = {
   PASSWORD: 'パスワード',
   PASSWORD_FOR_CONFIRMATION: 'パスワード（確認用）',
 };
+
+export const BUTTON_TEXT = {
+  CANCEL: 'キャンセル',
+  REGISTRATION: '登録',
+  NEW_REGISTRATION: '新規登録',
+  LOGIN: 'ログイン',
+  OK: 'OK',
+};

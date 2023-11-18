@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Button } from '@mui/material';
+import { BUTTON_TEXT } from '@/app/contents';
 
 type ButtonProps = {
   onClick: () => void;
@@ -16,7 +17,7 @@ const AtomLoginButton: FC<ButtonProps> = ({ onClick, disabled }) => (
       onClick={onClick}
       disabled={disabled}
     >
-      ログイン
+      {BUTTON_TEXT.LOGIN}
     </Button>
   </center>
 );

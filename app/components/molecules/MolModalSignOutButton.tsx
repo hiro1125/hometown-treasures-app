@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { auth } from '@/app/firebase';
 import AtomCancelButton from '@/app/components/atoms/AtomCancelButton';
+import { BUTTON_TEXT } from '@/app/contents';
 
 const MolModalSignOutButton = () => {
   const [open, setOpen] = useState(false);
@@ -49,7 +50,7 @@ const MolModalSignOutButton = () => {
               }
               onClick={() => auth.signOut()}
             >
-              OK
+              {BUTTON_TEXT.OK}
             </Button>
           </Box>
         </Box>

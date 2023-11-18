@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Button } from '@mui/material';
+import { BUTTON_TEXT } from '@/app/contents';
 
 type ButtonProps = {
   onClick: () => void;
@@ -12,7 +13,7 @@ const AtomCancelButton: FC<ButtonProps> = ({ onClick }) => (
     }
     onClick={onClick}
   >
-    キャンセル
+    {BUTTON_TEXT.CANCEL}
   </Button>
 );
 

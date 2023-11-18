@@ -8,7 +8,7 @@ import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 import AtomLoginButton from '@/app/components/atoms/AtomLoginButton';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import NewRegistrationScreen from '@/app/components/NewRegistrationScreen';
-import { LABEL_TEXT } from '@/app/contents';
+import { BUTTON_TEXT, LABEL_TEXT } from '@/app/contents';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/app/firebase';
 
@@ -99,7 +99,7 @@ const LoginScreen = () => {
             className={'text-blue-500 border border-blue-500 text-lg py-3 px-6'}
             onClick={handleRegistrationClick}
           >
-            新規登録
+            {BUTTON_TEXT.NEW_REGISTRATION}
           </Button>
         </center>
       </Box>
