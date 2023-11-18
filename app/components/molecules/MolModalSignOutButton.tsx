@@ -46,7 +46,7 @@ const MolModalSignOutButton = () => {
             <AtomCancelButton onClick={handleClose} />
             <Button
               className={
-                'bg-blue-400 hover:bg-blue-500 text-white text-lg py-3 px-12 rounded-full'
+                'bg-blue-400 hover:bg-blue-500 text-white text-lg py-3 px-12 rounded-full ml-3'
               }
               onClick={() => auth.signOut()}
             >
