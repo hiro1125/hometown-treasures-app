@@ -17,3 +17,9 @@ export const BUTTON_TEXT = {
   LOGIN: 'ログイン',
   OK: 'OK',
 };
+
+export const TYPOGRAPHY_TEXT = {
+  HOMETOWN_RECORD_BOOKS: 'ふるさと納税記録帳',
+  BALANCE_OF_DONATIONS: '寄付金額残高',
+  SIGN_OUT: '本当にサインアウトしますか？',
+};

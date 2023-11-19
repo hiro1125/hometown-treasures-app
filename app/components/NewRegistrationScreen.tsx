@@ -7,7 +7,7 @@ import { Button, Grid } from '@mui/material';
 import AtomEmailInput from '@/app/components/atoms/AtomEmailInput';
 import AtomPasswordInput from '@/app/components/atoms/AtomPasswordInput';
 import LoginScreen from '@/app/components/LoginScreen';
-import { BUTTON_TEXT, LABEL_TEXT } from '@/app/contents';
+import { BUTTON_TEXT, LABEL_TEXT, TYPOGRAPHY_TEXT } from '@/app/contents';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/app/firebase';
 
@@ -53,7 +53,7 @@ const NewRegistrationScreen = () => {
   ) : (
     <Container maxWidth='sm' className={'mt-28 p-6'}>
       <Typography variant='h4' gutterBottom className={' text-center'}>
-        ふるさと納税記録帳
+        {TYPOGRAPHY_TEXT.HOMETOWN_RECORD_BOOKS}
       </Typography>
       <Box component='form'>
         <Grid
