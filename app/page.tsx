@@ -9,13 +9,13 @@ import { Box, CircularProgress } from '@mui/material';
 export default function Home() {
   const [user, loading] = useAuthState(auth);
 
-  if (loading) {
-    return (
-      <Box className='flex justify-center items-center h-screen'>
-        <CircularProgress size={60} />
-      </Box>
-    );
-  }
-
-  return <main>{user ? <HomeScreen /> : <LoginScreen />}</main>;
+  return loading ? (
+    <Box className='flex justify-center items-center h-screen'>
+      <CircularProgress size={60} />
+    </Box>
+  ) : user ? (
+    <HomeScreen />
+  ) : (
+    <LoginScreen />
+  );
 }
