@@ -15,6 +15,10 @@ const MolHeader = () => {
     setOpen(true);
   };
 
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' open={open}>
@@ -32,7 +36,7 @@ const MolHeader = () => {
           <AtomsSearch />
         </Toolbar>
       </AppBar>
-      <MolDrawer open={open} setOpen={setOpen} />
+      <MolDrawer open={open} setOpen={setOpen} onClose={handleDrawerClose} />
     </Box>
   );
 };
