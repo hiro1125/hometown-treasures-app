@@ -11,13 +11,8 @@ import MolDrawer from '@/app/components/molecules/MolDrawer';
 const MolHeader = () => {
   const [open, setOpen] = useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const handleDrawerOpen = () => setOpen(true);
+  const handleDrawerClose = () => setOpen(false);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -36,7 +31,12 @@ const MolHeader = () => {
           <AtomsSearch />
         </Toolbar>
       </AppBar>
-      <MolDrawer open={open} setOpen={setOpen} onClose={handleDrawerClose} />
+      <MolDrawer
+        open={open}
+        setOpen={setOpen}
+        onClose={handleDrawerClose}
+        handleDrawerClose={handleDrawerClose}
+      />
     </Box>
   );
 };

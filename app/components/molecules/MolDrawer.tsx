@@ -9,14 +9,11 @@ type DrawerProps = {
   open: boolean;
   setOpen: (e: boolean) => void;
   onClose: () => void;
+  handleDrawerClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const MolDrawer: FC<DrawerProps> = ({ open, setOpen, onClose }) => {
+const MolDrawer: FC<DrawerProps> = ({ open, onClose, handleDrawerClose }) => {
   const drawerWidth = 240;
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <>
