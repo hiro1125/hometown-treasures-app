@@ -8,6 +8,7 @@ type EmailProps = {
 
 const AtomEmailInput: FC<EmailProps> = ({ onChange }) => (
   <TextField
+    type='email'
     label='メールアドレス'
     variant='outlined'
     fullWidth
