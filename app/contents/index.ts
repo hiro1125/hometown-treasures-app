@@ -23,3 +23,5 @@ export const TYPOGRAPHY_TEXT = {
   BALANCE_OF_DONATIONS: '寄付金額残高',
   SIGN_OUT: '本当にサインアウトしますか？',
 };
+
+export const totalAmountValue = 50000;

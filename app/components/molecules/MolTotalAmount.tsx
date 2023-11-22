@@ -1,11 +1,24 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import { Card, CardContent } from '@mui/material';
-import { TYPOGRAPHY_TEXT } from '@/app/contents';
+import { TYPOGRAPHY_TEXT, totalAmountValue } from '@/app/contents';
+import { listData } from '@/app/moc';
+import { useDateTime } from '@/app/hooks/useDateTime';
 
 const MolTotalAmount = () => {
-  const [count, setCount] = useState(50000);
+  const [count, setCount] = useState(totalAmountValue);
+  const getYear = useDateTime('YYYY');
+
+  useEffect(() => {
+    const presentAmount = listData
+      .filter(
+        (item) => new Date(item.orderDate).getFullYear().toString() === getYear
+      )
+      .reduce((total, item) => total + item.amountOfMoney, 0);
+
+    setCount(totalAmountValue - presentAmount);
+  }, [getYear]);
 
   const formattedDonationAmount = count.toLocaleString('ja-JP');
 
