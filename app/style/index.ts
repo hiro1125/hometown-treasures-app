@@ -1,6 +1,7 @@
 import MuiAppBar from '@mui/material/AppBar';
 import { InputBase, alpha, styled } from '@mui/material';
 import { AppBarProps } from '@/app/types';
+import { DataGrid } from '@mui/x-data-grid';
 
 /**div 要素をスタイリング */
 /** theme は Material-UI で使用されるテーマ情報 */
@@ -93,3 +94,26 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
+
+export const GridContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'flex-end',
+  margin: '64px',
+  height: 'auto',
+  width: 'auto',
+  '@media screen and (max-width: 1000px)': {
+    margin: '40px',
+  },
+});
+
+export const CustomDataGrid = styled(DataGrid)({
+  height: 'auto',
+  width: 'auto',
+  '.MuiDataGrid-columnHeaderTitle': {
+    color: 'white',
+    fontWeight: 700,
+  },
+  '.MuiDataGrid-columnHeadersInner': {
+    backgroundColor: '#368bcf',
+  },
+});

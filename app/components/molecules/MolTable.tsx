@@ -1,65 +1,111 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from '@mui/material';
-import { INDEX_TITLE_TEXT } from '@/app/contents';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import { useDataUpdate } from '@/app/hooks/useDataUpdate';
+import {
+  GridActionsCellItem,
+  GridColDef,
+  GridRowParams,
+  jaJP,
+} from '@mui/x-data-grid';
+import { ApiListData } from '@/app/types';
+import { CustomDataGrid, GridContainer } from '@/app/style';
 
 const MolTable = () => {
   const { listData } = useDataUpdate();
+  const [rows, setRows] = useState<ApiListData[]>(listData);
+
+  const columns: GridColDef[] = [
+    {
+      field: 'orderDate',
+      headerName: '注文日',
+      headerClassName: 'header-color',
+      type: 'date',
+      editable: true,
+      minWidth: 150,
+      flex: 0.3,
+      valueGetter: (params) => {
+        const dateString = params.value;
+        const date = moment(dateString, 'YYYY/MM/DD').toDate();
+        return date;
+      },
+      /** 'YYYY年M月D日'の形式で返す */
+      valueFormatter: (params) => {
+        const formatDate = params.value;
+        return moment(formatDate).format('YYYY年M月D日');
+      },
+    },
+    {
+      field: 'productName',
+      headerName: '商品名',
+      editable: true,
+      minWidth: 150,
+      flex: 1,
+    },
+    {
+      field: 'address',
+      headerName: '住所',
+      editable: true,
+      minWidth: 150,
+      flex: 0.3,
+    },
+    {
+      field: 'amountOfMoney',
+      type: 'number',
+      headerName: '金額',
+      editable: true,
+      align: 'left',
+      headerAlign: 'left',
+      valueFormatter: (params) => `${params.value.toLocaleString('ja-JP')} 円`,
+      minWidth: 150,
+      flex: 0.2,
+    },
+    {
+      field: 'actions',
+      type: 'actions',
+      headerName: '操作',
+      cellClassName: 'actions',
+      minWidth: 150,
+      getActions: (params: GridRowParams) => [
+        <GridActionsCellItem
+          key={params.id}
+          icon={<EditIcon />}
+          label='Edit'
+          className='textPrimary'
+          color='inherit'
+        />,
+        <GridActionsCellItem
+          key={params.id}
+          icon={<DeleteIcon />}
+          label='Delete'
+          color='inherit'
+        />,
+      ],
+    },
+  ];
 
   return (
-    <div className={'p-10'}>
-      <Paper className={'w-full overflow-hidden'}>
-        <TableContainer sx={{ maxHeight: 500 }}>
-          <Table>
-            <TableHead className={'sticky top-0 bg-blue-200'}>
-              <TableRow>
-                <TableCell>{INDEX_TITLE_TEXT.DATE}</TableCell>
-                <TableCell className={'text-left'}>
-                  {INDEX_TITLE_TEXT.PRODUCT}
-                </TableCell>
-                <TableCell className={'text-center'}>
-                  {INDEX_TITLE_TEXT.DOMICILE}
-                </TableCell>
-                <TableCell className={'text-center'}>
-                  {INDEX_TITLE_TEXT.AMOUNT_OF_MONEY}
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {listData.map((item, index) => (
-                <TableRow
-                  key={index}
-                  className={'hover:bg-gray-100 cursor-pointer'}
-                >
-                  <TableCell className={'font-medium'}>
-                    {moment(item.orderDate).format('YYYY年M月D日')}
-                  </TableCell>
-                  <TableCell className={'text-left'}>
-                    {item.productName}
-                  </TableCell>
-                  <TableCell className={'text-center'}>
-                    {item.address}
-                  </TableCell>
-                  <TableCell className={'text-center'}>
-                    {item.amountOfMoney.toLocaleString('ja-JP')}円
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-    </div>
+    <GridContainer>
+      <CustomDataGrid
+        sx={{
+          boxShadow: 2,
+          border: 2,
+          borderColor: 'primary.light',
+          '& .MuiDataGrid-cell:hover': {
+            color: 'primary.main',
+            cursor: 'pointer',
+          },
+        }}
+        rows={rows}
+        columns={columns}
+        editMode='row'
+        autoHeight
+        localeText={jaJP.components.MuiDataGrid.defaultProps.localeText}
+        hideFooter
+      />
+    </GridContainer>
   );
 };
 
