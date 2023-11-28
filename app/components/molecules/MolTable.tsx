@@ -7,6 +7,7 @@ import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 import {
   GridActionsCellItem,
   GridColDef,
+  GridRowId,
   GridRowParams,
   jaJP,
 } from '@mui/x-data-grid';
@@ -16,6 +17,17 @@ import { CustomDataGrid, GridContainer } from '@/app/style';
 const MolTable = () => {
   const { listData } = useDataUpdate();
   const [rows, setRows] = useState<ApiListData[]>(listData);
+
+  const handleDeleteClick = (id: GridRowId) => {
+    setRows(rows.filter((item) => item.id !== id));
+  };
+
+  const handleClickEvent =
+    (id: GridRowId) =>
+    (event: React.MouseEvent<HTMLButtonElement | HTMLLIElement>) => {
+      event.preventDefault();
+      handleDeleteClick(id);
+    };
 
   const columns: GridColDef[] = [
     {
@@ -82,6 +94,7 @@ const MolTable = () => {
           icon={<DeleteIcon />}
           label='Delete'
           color='inherit'
+          onClick={handleClickEvent(params.id as number)}
         />,
       ],
     },
