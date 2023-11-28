@@ -26,6 +26,7 @@ const MolTable = () => {
       editable: true,
       minWidth: 150,
       flex: 0.3,
+      hideable: false,
       valueGetter: (params) => {
         const dateString = params.value;
         const date = moment(dateString, 'YYYY/MM/DD').toDate();
