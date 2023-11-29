@@ -7,6 +7,7 @@ import { useDataUpdate } from '@/app/hooks/useDataUpdate';
 import {
   GridActionsCellItem,
   GridColDef,
+  GridEditInputCell,
   GridRowId,
   GridRowParams,
   jaJP,
@@ -74,6 +75,14 @@ const MolTable = () => {
       valueFormatter: (params) => `${params.value.toLocaleString('ja-JP')} 円`,
       minWidth: 150,
       flex: 0.2,
+      renderEditCell: (params) => (
+        <GridEditInputCell
+          {...params}
+          inputProps={{
+            min: 0,
+          }}
+        />
+      ),
     },
     {
       field: 'actions',
