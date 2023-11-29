@@ -1,5 +1,5 @@
 export type ApiListData = {
-  id?: number;
+  id: string;
   orderDate: string;
   productName: string;
   address: string;
