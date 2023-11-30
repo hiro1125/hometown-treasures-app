@@ -5,7 +5,6 @@ import { Box, IconButton, Toolbar } from '@mui/material';
 import { AppBar } from '@/app/style';
 import MenuIcon from '@mui/icons-material/Menu';
 import AtomDateTime from '@/app/components/atoms/AtomDateTime';
-import AtomsSearch from '@/app/components/atoms/AtomsSearch';
 import MolDrawer from '@/app/components/molecules/MolDrawer';
 
 const MolHeader = () => {
@@ -28,7 +27,6 @@ const MolHeader = () => {
             <MenuIcon />
           </IconButton>
           <AtomDateTime />
-          <AtomsSearch />
         </Toolbar>
       </AppBar>
       <MolDrawer
