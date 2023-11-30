@@ -1,7 +1,7 @@
-import { ApiListData } from '@/app/types';
+import { GridRowsProp } from '@mui/x-data-grid';
 import { v4 as uuidv4 } from 'uuid';
 
-export const listData: ApiListData[] = [
+export const listData: GridRowsProp = [
   {
     id: uuidv4(),
     orderDate: '2023/4/29',

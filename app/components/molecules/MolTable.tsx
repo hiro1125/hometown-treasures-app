@@ -12,12 +12,11 @@ import {
   GridRowParams,
   jaJP,
 } from '@mui/x-data-grid';
-import { ApiListData } from '@/app/types';
 import { CustomDataGrid, GridContainer } from '@/app/style';
+import { listData } from '@/app/moc';
 
 const MolTable = () => {
-  const { listData } = useDataUpdate();
-  const [rows, setRows] = useState<ApiListData[]>(listData);
+  const [rows, setRows] = useState(listData);
 
   const handleDeleteClick = (id: GridRowId) => {
     setRows(rows.filter((item) => item.id !== id));
