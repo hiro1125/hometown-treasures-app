@@ -18,16 +18,9 @@ import { listData } from '@/app/moc';
 const MolTable = () => {
   const [rows, setRows] = useState(listData);
 
-  const handleDeleteClick = (id: GridRowId) => {
+  const handleDeleteClick = (id: GridRowId) => () => {
     setRows(rows.filter((item) => item.id !== id));
   };
-
-  const handleClickEvent =
-    (id: GridRowId) =>
-    (event: React.MouseEvent<HTMLButtonElement | HTMLLIElement>) => {
-      event.preventDefault();
-      handleDeleteClick(id);
-    };
 
   const columns: GridColDef[] = [
     {
@@ -102,7 +95,7 @@ const MolTable = () => {
           icon={<DeleteIcon />}
           label='Delete'
           color='inherit'
-          onClick={handleClickEvent(params.id as number)}
+          onClick={handleDeleteClick(params.id as number)}
         />,
       ],
     },
