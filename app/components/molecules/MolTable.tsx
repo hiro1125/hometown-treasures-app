@@ -9,6 +9,7 @@ import {
   GridEditInputCell,
   GridRowId,
   GridRowParams,
+  GridToolbar,
   jaJP,
 } from '@mui/x-data-grid';
 import { CustomDataGrid, GridContainer } from '@/app/style';
@@ -104,6 +105,7 @@ const MolTable = () => {
     <GridContainer>
       <CustomDataGrid
         sx={{
+          height: 500,
           boxShadow: 2,
           border: 2,
           borderRadius: 2,
@@ -116,9 +118,11 @@ const MolTable = () => {
         rows={rows}
         columns={columns}
         editMode='row'
-        autoHeight
         localeText={jaJP.components.MuiDataGrid.defaultProps.localeText}
         hideFooter
+        slots={{
+          toolbar: GridToolbar,
+        }}
       />
     </GridContainer>
   );
