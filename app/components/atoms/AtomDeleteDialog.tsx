@@ -1,3 +1,4 @@
+import React, { FC, useState } from 'react';
 import {
   Button,
   Dialog,
@@ -6,7 +7,6 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material';
-import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import AtomCancelButton from '@/app/components/atoms/AtomCancelButton';
 import { BUTTON_TEXT } from '@/app/contents';
@@ -15,7 +15,7 @@ type ButtonProps = {
   onClick: () => void;
 };
 
-const AtomDeleteDialog = ({ onClick }: ButtonProps) => {
+const AtomDeleteDialog: FC<ButtonProps> = ({ onClick }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
