@@ -14,6 +14,7 @@ import {
 } from '@mui/x-data-grid';
 import { CustomDataGrid, GridContainer } from '@/app/style';
 import { listData } from '@/app/moc';
+import AtomDeleteDialog from '@/app/components/atoms/AtomDeleteDialog';
 
 const MolTable = () => {
   const [rows, setRows] = useState(listData);
@@ -82,6 +83,7 @@ const MolTable = () => {
       headerName: '操作',
       cellClassName: 'actions',
       minWidth: 150,
+      flex: 0.2,
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           key={params.id}
@@ -90,14 +92,17 @@ const MolTable = () => {
           className='textPrimary'
           color='inherit'
         />,
-        <GridActionsCellItem
-          key={params.id}
-          icon={<DeleteIcon />}
-          label='Delete'
-          color='inherit'
-          onClick={handleDeleteClick(params.id as number)}
-        />,
       ],
+    },
+    {
+      field: 'delete',
+      type: 'actions',
+      headerName: '削除',
+      flex: 0.2,
+      sortable: false,
+      renderCell: (params) => (
+        <AtomDeleteDialog onClick={handleDeleteClick(params.id as number)} />
+      ),
     },
   ];
 
