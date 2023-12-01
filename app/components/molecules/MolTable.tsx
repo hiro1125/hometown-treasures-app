@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import {
   GridActionsCellItem,
   GridColDef,
