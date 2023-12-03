@@ -1,19 +1,17 @@
 'use client';
 import React, { useState } from 'react';
 import moment from 'moment';
-import EditIcon from '@mui/icons-material/Edit';
 import {
-  GridActionsCellItem,
   GridColDef,
   GridEditInputCell,
   GridRowId,
-  GridRowParams,
   GridToolbar,
   jaJP,
 } from '@mui/x-data-grid';
 import { CustomDataGrid, GridContainer } from '@/app/style';
 import { listData } from '@/app/moc';
 import AtomDeleteDialog from '@/app/components/atoms/AtomDeleteDialog';
+import MolEditDialog from '@/app/components/molecules/MolEditDialog';
 
 const MolTable = () => {
   const [rows, setRows] = useState(listData);
@@ -77,26 +75,19 @@ const MolTable = () => {
       ),
     },
     {
-      field: 'actions',
+      field: 'edit',
       type: 'actions',
-      headerName: '操作',
-      cellClassName: 'actions',
-      minWidth: 150,
+      headerName: '編集',
       flex: 0.2,
-      getActions: (params: GridRowParams) => [
-        <GridActionsCellItem
-          key={params.id}
-          icon={<EditIcon />}
-          label='Edit'
-          className='textPrimary'
-          color='inherit'
-        />,
-      ],
+      sortable: false,
+      cellClassName: 'actions',
+      renderCell: (params) => <MolEditDialog />,
     },
     {
       field: 'delete',
       type: 'actions',
       headerName: '削除',
+      minWidth: 150,
       flex: 0.2,
       sortable: false,
       renderCell: (params) => (

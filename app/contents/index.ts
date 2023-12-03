@@ -9,6 +9,7 @@ export const BUTTON_TEXT = {
   NEW_REGISTRATION: '新規登録',
   LOGIN: 'ログイン',
   OK: 'OK',
+  SAVE: '保存',
 };
 
 export const TYPOGRAPHY_TEXT = {
