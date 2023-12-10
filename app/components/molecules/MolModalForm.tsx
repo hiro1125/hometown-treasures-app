@@ -76,7 +76,7 @@ const MolModalForm = () => {
         aria-describedby='modal-modal-description'
       >
         <div
-          onClick={handleClose}
+          onClick={(e) => e.stopPropagation()}
           className='fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75'
         >
           <div
